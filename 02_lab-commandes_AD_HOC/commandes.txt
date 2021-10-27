@@ -1,0 +1,13 @@
+- Créer l'inventaire :  confer fichier hosts
+- Faire un ping sur la cible ansible via le module ping:
+  ansible -i hosts all -m ping
+  ansible all -m ping  -o # avec l'option -o
+- Créer un fichier à l'aide du module copy
+  ansible -i hosts all -m copy -a "dest=/home/vagrant/toto.txt content='bonjour eazytraining'"
+- Vérifier l'existence du fichier 
+  ansible -i hosts all -m shell -a "ls -l /home/vagrant/toto.txt"
+  ansible -i hosts all -m shell -a "cat /home/vagrant/toto.txt"
+- Utiliser le module setup pour découvrir les machines distances
+  ansible -i hosts all -m setup
+- Connaitre la RAM
+  ansible all -i hosts -m setup -a 'filter=ansible_memtotal_mb'  

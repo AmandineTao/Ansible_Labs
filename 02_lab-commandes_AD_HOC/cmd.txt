@@ -1,0 +1,8 @@
+#ping vm client1 nommée "aclient1"(ce nom est def dans le fichier hosts, on peut mettre le nom qu'on souhaite)
+ansible aclient1 -m ping
+
+#ping all vm
+ansible all -m ping
+
+#créer un fichier toto.txt
+ansible all -m copy -a "dest=/home/vagrant/toto.txt content='bonjour eazytraining'"
