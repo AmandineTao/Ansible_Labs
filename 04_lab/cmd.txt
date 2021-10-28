@@ -1,0 +1,41 @@
+124  cd 04_lab/
+  125  touch ansible.cfg
+  126  vi ansible.cfg
+  127  cat ansible.cfg
+  128  ls
+  129  vi hosts.ini
+  130  vi ansible.cfg
+  131  ansible all -m ping
+  132  rm hosts.ini
+  133  vi hosts.ini
+  134  ansible all -m ping
+  135  ansible-inventory graph
+  136  ansible-inventory --graph
+  137  rm hosts.ini
+  138  vi hosts.ini
+  139  ansible all -m ping
+  140  rm hosts.ini
+  141  vi hosts.ini
+  142  ansible all -m ping
+  143  rm hosts.ini
+  144  vi hosts.ini
+  145  ansible all -m ping
+  146  vi hosts.ini
+  147  ansible all -m ping
+  148  rm hosts.ini
+  149  vi hosts.ini
+  150  ansible all -m ping
+  151  vi hosts.ini
+  152  vi hosts.yaml
+  153  ansible all -m ping
+  154  vi ansible.cfg
+  155  ansible all -m ping
+  156  vi hosts.ini
+  157  ansible all -m ping
+  158  vi hosts.ini
+  159  ansible-inventory --graph
+  160  vi hosts.ini
+  161  vi hosts.yaml
+  162  ansible-inventory -i hosts.ini -y --list > inventory.yaml
+  163  vi inventory.yaml
+  164  history

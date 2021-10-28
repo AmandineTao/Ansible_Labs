@@ -16,20 +16,20 @@ Vagrant.configure("2") do |config|
         shell.args = ["amaster", "192.168.99.10"]
       end
     end
-    aclients=2
-    ram_aclient=2048
-    cpu_aclient=2
-    (1..aclients).each do |i|
-      config.vm.define "aclient#{i}" do |aclient|
-        aclient.vm.box = "geerlingguy/centos7"
-        aclient.vm.network "private_network", type: "static", ip: "192.168.99.1#{i}"
-        aclient.vm.hostname = "aclient#{i}"
-        aclient.vm.provider "virtualbox" do |v|
-          v.name = "aclient#{i}"
-          v.memory = ram_aclient
-          v.cpus = cpu_aclient
+    clients=2
+    ram_client=2048
+    cpu_client=2
+    (1..clients).each do |i|
+      config.vm.define "client#{i}" do |client|
+        client.vm.box = "geerlingguy/centos7"
+        client.vm.network "private_network", type: "static", ip: "192.168.99.1#{i}"
+        client.vm.hostname = "client#{i}"
+        client.vm.provider "virtualbox" do |v|
+          v.name = "client#{i}"
+          v.memory = ram_client
+          v.cpus = cpu_client
         end
-        aclient.vm.provision :shell do |shell|
+        client.vm.provision :shell do |shell|
           shell.path = "install_ansible.sh"
           shell.args = ["node", "192.168.99.10"]
         end
