@@ -1,0 +1,40 @@
+Partie 1 : 
+
+1 - Créez un dossier webapp qui va contenir tous les fichiers de notre projet
+2 - Créez un fichier d’inventaire appelé prod.yml (au format yaml) contenant 
+    un groupe prod avec comme seul membre notre client
+3 - Créez un dossier group_vars qui va contenir un fichier nommé prod qui 
+    contiendra les informations de connexion à utiliser par ansible (login et mot de passe)
+4 - Comment faites vous pour installer nginx sur une machine, le démarrer et le 
+    rendre enable ? Donnez la suite des commanes shell pour faire celà 
+5 - creer un fichier nginx.yml qui permet d’installer nginx tout en s’assurant que yum 
+    update est ok et que nginx soit start + enable.
+    PS : 
+        - Reinitialiser le mdp root sur vos machines en mettant root
+        - la variable ansible_sudo_pass: root permettra de passer le mdp root
+        - Penser au become: yes pour autoriser le passage en root
+        - le firewalld doit etre desactivé
+     
+
+Partie 2 : 
+1 - Faire un deuxième playbook webapp.yml permettant de deployer un site sur la machine 
+    client1 avec bonjour dans un fichier index.html
+
+2 - Faire une v2 de webapp.yaml (webapp-v2.yaml) pour déployer le site internet static-website
+        PS : repos du site statique : https://github.com/diranetafen/static-website-example.git
+
+3 - Faire un playbook deploy-webapp.yml qui lance les deux playbook nginx.yaml et webapp-v2.yaml
+        Ps : Il faudra chercher comment importer un playbook dans un autre
+
+Partie 3 : Template Jinja et conditions
+1- Faire une v3 de webapp.yaml (webapp-v3.yaml) en utilisant un template Jinja pour modifier le 
+    fichier index.html du serveur. On rajoutera un handler qui redémarre le service httpd si besoin
+    PS : Le module template sera utile
+
+
+2 - On voudrait variabiliser le playbook en fonction des serveurs, on suppose qu'on a des serveurs Debian
+    et des serveurs Centos
+    Rajouter des conditions au playbook afin qu'il puisse se dérouler en fonction de la nature
+    de l'OS du serveur cible (fact ansible_os_family à exploiter).
+    Pour cela, il faudra créer une nouvelle version du playbook webapp (webapp-v4.yaml) et une nouvelle 
+    version du playbook nginx.yml (nginx-v2.yml)
