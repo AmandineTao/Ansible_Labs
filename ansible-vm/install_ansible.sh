@@ -3,7 +3,7 @@
 yum -y update
 yum -y install epel-release
 yum install -y python3
-if [ $1 == "amaster" ]
+if [ $1 == "master" ]
 then
 
   # install ansible
