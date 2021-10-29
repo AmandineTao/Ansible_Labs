@@ -1,0 +1,19 @@
+---
+- name: Run mario
+  gather_facts: true
+  hosts: prod
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tags:
+  - mario
+
+  tasks:
+    - name: Start mario
+      community.docker.docker_container:
+        name: mario
+        image: pengbai/docker-supermario
+        state: started
+        recreate: yes     #defines if an existing container should be created
+        ports:
+          - "8080:8080" 
+        
