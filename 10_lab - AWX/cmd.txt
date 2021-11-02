@@ -1,0 +1,3 @@
+#après le docker-compose up
+#print images
+docker ps -a
