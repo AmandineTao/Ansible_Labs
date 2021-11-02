@@ -1,6 +1,7 @@
 ---
 - name: "install webapp v5"
   become: yes
+  become_user: yes
   hosts: prod
   tags: webapp_v5
   vars:
@@ -19,7 +20,6 @@
         name: git
         state: present
         update_cache: yes
-      become_user: yes
       
     - name: "git clone to nginx folder"
       git:
