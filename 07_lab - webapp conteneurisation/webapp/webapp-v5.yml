@@ -15,12 +15,12 @@
         path: "/home/{{ ansible_user }}/webapp/"
         state: directory
     - name: "Install git"
-      vars:
-        ansible_python_interpreter: /usr/bin/python2
       yum:
         name: git
         state: present
         update_cache: yes
+      become_user: yes
+      
     - name: "git clone to nginx folder"
       git:
         repo: https://github.com/diranetafen/static-website-example.git
