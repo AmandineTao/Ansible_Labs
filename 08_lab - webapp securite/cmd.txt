@@ -1,0 +1,35 @@
+ansible-vault encrypt files/secrets/credentials.yml
+ --password: toto
+#print fichier chiffrer
+cat files/secrets/credentials.yml
+
+#lancer playbook
+ansible-playbook deploy-webapp-securite.yml
+
+#pour mettre le mot de passe de vault
+ansible-playbook deploy-webapp-securite.yml --ask-vault-pass
+
+#check app sur navigateur
+ip_client1:8000; ip_client2:8000
+
+ansible
+#commenter ansible_password
+
+#generer couple de clés
+ssh-keygen -t rsa
+(enter, enter,..)
+
+ll /home/vagrant/.ssh
+
+#send clé serveur1
+ssh-copy-id vagrant@ip_client1
+
+
+#pour que ansible use la clé
+deplacer ficher:
+mv files/secrets/credentials.yml /tmp
+
+et commenter vars-files dans les 2 playbook(docker et webapp-v6).yml
+
+#rappeler la cmd sans ask le mot de passe de vault
+ansible-playbook deploy-webapp-securite.yml
